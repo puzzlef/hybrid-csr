@@ -1,20 +1,27 @@
-Performance of PageRank using 32-bit floats vs 64-bit floats (pull, CSR).
+Comparing space usage of regular vs hybrid CSR (various sizes).
 
-This experiment was for comparing the performance between:
-1. Find pagerank using 32-bit floats (**float**).
-2. Find pagerank using 64-bit floats (**double**).
+This experiment was for comparing the space usage between:
+1. **Regular CSR**.
+2. **32bit Hybrid CSR** with **4bit block**, 28bit index (30 eff.).
+3. **32bit Hybrid CSR** with **8bit block**, 24bit index (27 eff.).
+4. **32bit Hybrid CSR** with **16bit block**, 16bit index (20 eff.).
+5. **64bit Hybrid CSR** with **4bit block**, 60bit index (62 eff.).
+6. **64bit Hybrid CSR** with **8bit block**, 56bit index (59 eff.).
+7. **64bit Hybrid CSR** with **16bit block**, 48bit index (52 eff.).
+8. **64bit Hybrid CSR** with **32bit block**, 32bit index (37 eff.).
 
-Both datatypes were attempted on different types of graphs, running each
-technique 5 times per graph to get a good time measure. It seems using
-**double** datatype increases execution time by a small factor in all cases.
-This could be attributed to increased memory bandwidth requirement. However,
-since most of the data for a graph (CSR) is stored as 32-bit ints, it possibly
-makes up most of the memory bottleneck, and not the rank vector.
+Each datatype was attempted on different types of graphs, recording the no. of
+*source-offsets*, *destination-indices*, and *total size in bytes*. The no. of
+*source-offsets* is always one more that the order of graph, because it also
+includes the final offset. As expected, for a given n-bit hybrid CSR using the
+highest possible block size (taking into account effective index bits) results
+is smallest space usage. For `coPapersCiteseer`, `coPapersDBLP`, and
+`indochina-2004`, the space usage is reduced by **more than 50%** using a
+**32bit hybrid CSR**. 64bit hybrid CSR supposed to be useful when the order
+of a graph is more than 32bits.
 
-See ["pagerank-push-vs-pull"] for a discussion on *push* vs *pull* method, and["pagerank-class-vs-csr"] for a comparisionbetween using a C++ DiGraph class
-directly vs using its CSR representation. The input data used for this
-experiment is available at ["graphs"] (for small ones), and the
-[SuiteSparse Matrix Collection].
+The input data used for this experiment is available at ["graphs"] (for small
+ones), and the [SuiteSparse Matrix Collection].
 
 ```bash
 $ g++ -O3 main.cxx
@@ -24,129 +31,228 @@ $ ...
 
 # Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
 # order: 5 size: 6 {}
-# order: 5 size: 6 {} (transposeWithDegree)
-# [00000.002 ms; 016 iters.] [0.0000e+00 err.] pagerankFloat
-# [00000.002 ms; 016 iters.] [8.9407e-08 err.] pagerankDouble
+# [48 bytes 6 source-offsets 6 destination-indices] csrRegular
+# [44 bytes 6 source-offsets 5 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [64 bytes 6 source-offsets 5 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/min-2SCC.mtx ...
 # order: 8 size: 12 {}
-# order: 8 size: 12 {} (transposeWithDegree)
-# [00000.005 ms; 039 iters.] [0.0000e+00 err.] pagerankFloat
-# [00000.005 ms; 039 iters.] [5.5929e-08 err.] pagerankDouble
+# [84 bytes 9 source-offsets 12 destination-indices] csrRegular
+# [76 bytes 9 source-offsets 10 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [68 bytes 9 source-offsets 8 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [68 bytes 9 source-offsets 8 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [116 bytes 9 source-offsets 10 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/min-4SCC.mtx ...
 # order: 21 size: 35 {}
-# order: 21 size: 35 {} (transposeWithDegree)
-# [00000.015 ms; 044 iters.] [0.0000e+00 err.] pagerankFloat
-# [00000.014 ms; 044 iters.] [7.4726e-08 err.] pagerankDouble
+# [228 bytes 22 source-offsets 35 destination-indices] csrRegular
+# [212 bytes 22 source-offsets 31 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [204 bytes 22 source-offsets 29 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [188 bytes 22 source-offsets 25 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [336 bytes 22 source-offsets 31 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [320 bytes 22 source-offsets 29 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [288 bytes 22 source-offsets 25 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [256 bytes 22 source-offsets 21 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
 # order: 6 size: 10 {}
-# order: 6 size: 10 {} (transposeWithDegree)
-# [00000.003 ms; 023 iters.] [0.0000e+00 err.] pagerankFloat
-# [00000.003 ms; 023 iters.] [5.8122e-08 err.] pagerankDouble
+# [68 bytes 7 source-offsets 10 destination-indices] csrRegular
+# [56 bytes 7 source-offsets 7 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [48 bytes 7 source-offsets 5 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [48 bytes 7 source-offsets 5 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [84 bytes 7 source-offsets 7 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
-# order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00400.480 ms; 062 iters.] [0.0000e+00 err.] pagerankFloat
-# [00480.127 ms; 062 iters.] [4.8116e-06 err.] pagerankDouble
+# [10377604 bytes 281904 source-offsets 2312497 destination-indices] csrRegular
+# [10377080 bytes 281904 source-offsets 2312366 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [10376488 bytes 281904 source-offsets 2312218 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [10374184 bytes 281904 source-offsets 2311642 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [19626544 bytes 281904 source-offsets 2312366 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [19625360 bytes 281904 source-offsets 2312218 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [19620752 bytes 281904 source-offsets 2311642 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [19604088 bytes 281904 source-offsets 2309559 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/web-BerkStan.mtx ...
 # order: 685230 size: 7600595 {}
-# order: 685230 size: 7600595 {} (transposeWithDegree)
-# [00886.251 ms; 063 iters.] [0.0000e+00 err.] pagerankFloat
-# [00932.142 ms; 063 iters.] [2.3126e-05 err.] pagerankDouble
+# [33143304 bytes 685231 source-offsets 7600595 destination-indices] csrRegular
+# [25232472 bytes 685231 source-offsets 5622887 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [22314888 bytes 685231 source-offsets 4893491 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [20164508 bytes 685231 source-offsets 4355896 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [47724020 bytes 685231 source-offsets 5622887 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [41888852 bytes 685231 source-offsets 4893491 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [37588092 bytes 685231 source-offsets 4355896 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [33190460 bytes 685231 source-offsets 3806192 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/web-Google.mtx ...
 # order: 916428 size: 5105039 {}
-# order: 916428 size: 5105039 {} (transposeWithDegree)
-# [01493.679 ms; 060 iters.] [0.0000e+00 err.] pagerankFloat
-# [01620.996 ms; 061 iters.] [5.1387e-04 err.] pagerankDouble
+# [24085872 bytes 916429 source-offsets 5105039 destination-indices] csrRegular
+# [24083308 bytes 916429 source-offsets 5104398 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [24081372 bytes 916429 source-offsets 5103914 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [24080164 bytes 916429 source-offsets 5103612 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [44500900 bytes 916429 source-offsets 5104398 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [44497028 bytes 916429 source-offsets 5103914 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [44494612 bytes 916429 source-offsets 5103612 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [44489100 bytes 916429 source-offsets 5102923 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/web-NotreDame.mtx ...
 # order: 325729 size: 1497134 {}
-# order: 325729 size: 1497134 {} (transposeWithDegree)
-# [00215.677 ms; 057 iters.] [0.0000e+00 err.] pagerankFloat
-# [00226.778 ms; 057 iters.] [7.7317e-04 err.] pagerankDouble
+# [7291456 bytes 325730 source-offsets 1497134 destination-indices] csrRegular
+# [4453116 bytes 325730 source-offsets 787549 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [3898052 bytes 325730 source-offsets 648783 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [3565896 bytes 325730 source-offsets 565744 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [7603312 bytes 325730 source-offsets 787549 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [6493184 bytes 325730 source-offsets 648783 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [5828872 bytes 325730 source-offsets 565744 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [5406840 bytes 325730 source-offsets 512990 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
 # order: 77360 size: 905468 {}
-# order: 77360 size: 905468 {} (transposeWithDegree)
-# [00089.458 ms; 054 iters.] [0.0000e+00 err.] pagerankFloat
-# [00091.632 ms; 054 iters.] [1.4557e-07 err.] pagerankDouble
+# [3931316 bytes 77361 source-offsets 905468 destination-indices] csrRegular
+# [3693712 bytes 77361 source-offsets 846067 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [3609820 bytes 77361 source-offsets 825094 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [3515208 bytes 77361 source-offsets 801441 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [7077980 bytes 77361 source-offsets 846067 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [6910196 bytes 77361 source-offsets 825094 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [6720972 bytes 77361 source-offsets 801441 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [6464964 bytes 77361 source-offsets 769440 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
 # order: 82168 size: 948464 {}
-# order: 82168 size: 948464 {} (transposeWithDegree)
-# [00098.767 ms; 055 iters.] [0.0000e+00 err.] pagerankFloat
-# [00100.595 ms; 055 iters.] [4.5454e-06 err.] pagerankDouble
+# [4122532 bytes 82169 source-offsets 948464 destination-indices] csrRegular
+# [3867060 bytes 82169 source-offsets 884596 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [3777444 bytes 82169 source-offsets 862192 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [3675732 bytes 82169 source-offsets 836764 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [7405444 bytes 82169 source-offsets 884596 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [7226212 bytes 82169 source-offsets 862192 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [7022788 bytes 82169 source-offsets 836764 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [6760668 bytes 82169 source-offsets 803999 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
 # order: 75888 size: 508837 {}
-# order: 75888 size: 508837 {} (transposeWithDegree)
-# [00080.112 ms; 053 iters.] [0.0000e+00 err.] pagerankFloat
-# [00078.032 ms; 053 iters.] [2.6043e-05 err.] pagerankDouble
+# [2338904 bytes 75889 source-offsets 508837 destination-indices] csrRegular
+# [2152200 bytes 75889 source-offsets 462161 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [2054760 bytes 75889 source-offsets 437801 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [1946000 bytes 75889 source-offsets 410611 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [4000844 bytes 75889 source-offsets 462161 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [3805964 bytes 75889 source-offsets 437801 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [3588444 bytes 75889 source-offsets 410611 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [3359980 bytes 75889 source-offsets 382053 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
 # order: 299067 size: 1955352 {}
-# order: 299067 size: 1955352 {} (transposeWithDegree)
-# [00237.238 ms; 044 iters.] [0.0000e+00 err.] pagerankFloat
-# [00250.450 ms; 044 iters.] [8.0891e-08 err.] pagerankDouble
+# [9017680 bytes 299068 source-offsets 1955352 destination-indices] csrRegular
+# [7039956 bytes 299068 source-offsets 1460921 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [6480408 bytes 299068 source-offsets 1321034 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [6130008 bytes 299068 source-offsets 1233434 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [12883640 bytes 299068 source-offsets 1460921 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [11764544 bytes 299068 source-offsets 1321034 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [11063744 bytes 299068 source-offsets 1233434 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [10671080 bytes 299068 source-offsets 1184351 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
 # order: 227320 size: 1628268 {}
-# order: 227320 size: 1628268 {} (transposeWithDegree)
-# [00189.405 ms; 047 iters.] [0.0000e+00 err.] pagerankFloat
-# [00197.162 ms; 047 iters.] [1.5103e-07 err.] pagerankDouble
+# [7422356 bytes 227321 source-offsets 1628268 destination-indices] csrRegular
+# [5183576 bytes 227321 source-offsets 1068573 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [4600820 bytes 227321 source-offsets 922884 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [4263464 bytes 227321 source-offsets 838545 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [9457868 bytes 227321 source-offsets 1068573 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [8292356 bytes 227321 source-offsets 922884 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [7617644 bytes 227321 source-offsets 838545 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [7240580 bytes 227321 source-offsets 791412 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
-# order: 4847571 size: 68993773 {} (transposeWithDegree)
-# [11482.458 ms; 050 iters.] [0.0000e+00 err.] pagerankFloat
-# [14564.962 ms; 050 iters.] [2.0510e-03 err.] pagerankDouble
+# [295365380 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular
+# [259873684 bytes 4847572 source-offsets 60120849 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [246424504 bytes 4847572 source-offsets 56758554 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [500357080 bytes 4847572 source-offsets 60120849 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [473458720 bytes 4847572 source-offsets 56758554 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [450554736 bytes 4847572 source-offsets 53895556 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [431781256 bytes 4847572 source-offsets 51548871 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
 # order: 434102 size: 32073440 {}
-# order: 434102 size: 32073440 {} (transposeWithDegree)
-# [02158.691 ms; 050 iters.] [0.0000e+00 err.] pagerankFloat
-# [02185.612 ms; 050 iters.] [3.4078e-07 err.] pagerankDouble
+# [130030172 bytes 434103 source-offsets 32073440 destination-indices] csrRegular
+# [55669560 bytes 434103 source-offsets 13483287 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [37710436 bytes 434103 source-offsets 8993506 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [26566604 bytes 434103 source-offsets 6207548 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [109602708 bytes 434103 source-offsets 13483287 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [73684460 bytes 434103 source-offsets 8993506 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [51396796 bytes 434103 source-offsets 6207548 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [37593052 bytes 434103 source-offsets 4482080 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
 # order: 540486 size: 30491458 {}
-# order: 540486 size: 30491458 {} (transposeWithDegree)
-# [02070.509 ms; 048 iters.] [0.0000e+00 err.] pagerankFloat
-# [02119.474 ms; 048 iters.] [2.1566e-07 err.] pagerankDouble
+# [124127780 bytes 540487 source-offsets 30491458 destination-indices] csrRegular
+# [60505588 bytes 540487 source-offsets 14585910 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [44309652 bytes 540487 source-offsets 10536926 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [33957536 bytes 540487 source-offsets 7948897 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+# [118849228 bytes 540487 source-offsets 14585910 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [86457356 bytes 540487 source-offsets 10536926 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [65753124 bytes 540487 source-offsets 7948897 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [52318660 bytes 540487 source-offsets 6269589 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/indochina-2004.mtx ...
 # order: 7414866 size: 194109311 {}
-# order: 7414866 size: 194109311 {} (transposeWithDegree)
-# [18790.924 ms; 060 iters.] [0.0000e+00 err.] pagerankFloat
-# [19182.994 ms; 059 iters.] [8.0596e-04 err.] pagerankDouble
+# [806096712 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular
+# [308575068 bytes 7414867 source-offsets 69728900 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [215743112 bytes 7414867 source-offsets 46520911 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [587490668 bytes 7414867 source-offsets 69728900 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [401826756 bytes 7414867 source-offsets 46520911 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [301548740 bytes 7414867 source-offsets 33986159 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [245751420 bytes 7414867 source-offsets 27011494 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/italy_osm.mtx ...
 # order: 6686493 size: 14027956 {}
-# order: 6686493 size: 14027956 {} (transposeWithDegree)
-# [04076.062 ms; 062 iters.] [0.0000e+00 err.] pagerankFloat
-# [04782.375 ms; 061 iters.] [8.5956e-07 err.] pagerankDouble
+# [82857800 bytes 6686494 source-offsets 14027956 destination-indices] csrRegular
+# [71335908 bytes 6686494 source-offsets 11147483 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [65529768 bytes 6686494 source-offsets 9695948 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [115925840 bytes 6686494 source-offsets 11147483 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [104313560 bytes 6686494 source-offsets 9695948 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [98059912 bytes 6686494 source-offsets 8914242 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [94485000 bytes 6686494 source-offsets 8467378 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/great-britain_osm.mtx ...
 # order: 7733822 size: 16313034 {}
-# order: 7733822 size: 16313034 {} (transposeWithDegree)
-# [08080.853 ms; 066 iters.] [0.0000e+00 err.] pagerankFloat
-# [07263.394 ms; 066 iters.] [1.0659e-07 err.] pagerankDouble
+# [96187428 bytes 7733823 source-offsets 16313034 destination-indices] csrRegular
+# [84615244 bytes 7733823 source-offsets 13419988 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [78697504 bytes 7733823 source-offsets 11940553 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [138295196 bytes 7733823 source-offsets 13419988 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [126459716 bytes 7733823 source-offsets 11940553 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [119628100 bytes 7733823 source-offsets 11086601 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [115350884 bytes 7733823 source-offsets 10551949 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/germany_osm.mtx ...
 # order: 11548845 size: 24738362 {}
-# order: 11548845 size: 24738362 {} (transposeWithDegree)
-# [09947.280 ms; 064 iters.] [0.0000e+00 err.] pagerankFloat
-# [10904.824 ms; 064 iters.] [9.3623e-08 err.] pagerankDouble
+# [145148832 bytes 11548846 source-offsets 24738362 destination-indices] csrRegular
+# [127947988 bytes 11548846 source-offsets 20438151 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [119124240 bytes 11548846 source-offsets 18232214 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [209700592 bytes 11548846 source-offsets 20438151 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [192053096 bytes 11548846 source-offsets 18232214 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [182091520 bytes 11548846 source-offsets 16987017 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [176171304 bytes 11548846 source-offsets 16246990 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # Loading graph /home/subhajit/data/asia_osm.mtx ...
 # order: 11950757 size: 25423206 {}
-# order: 11950757 size: 25423206 {} (transposeWithDegree)
-# [07596.662 ms; 062 iters.] [0.0000e+00 err.] pagerankFloat
-# [08693.011 ms; 062 iters.] [9.6745e-08 err.] pagerankDouble
+# [149495856 bytes 11950758 source-offsets 25423206 destination-indices] csrRegular
+# [129113856 bytes 11950758 source-offsets 20327706 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [118836148 bytes 11950758 source-offsets 17758279 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# [210424680 bytes 11950758 source-offsets 20327706 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [189869264 bytes 11950758 source-offsets 17758279 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [178640648 bytes 11950758 source-offsets 16354702 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [171998816 bytes 11950758 source-offsets 15524473 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 ```
 
 <br>
@@ -155,15 +261,12 @@ $ ...
 
 ## References
 
-- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](http://snap.stanford.edu/class/cs246-videos-2019/lec9_190205-cs246-720.mp4)
 - [SuiteSparse Matrix Collection]
 
 <br>
 <br>
 
-[![](https://i.imgur.com/wmbbEzJ.jpg)](https://www.youtube.com/watch?v=rKv_l1RnSqs)
+[![](https://i.imgur.com/eR6BeVh.jpg)](https://www.youtube.com/watch?v=1yoDFJ-JSag)
 
-["pagerank-push-vs-pull"]: https://github.com/puzzlef/pagerank-push-vs-pull
-["pagerank-class-vs-csr"]: https://github.com/puzzlef/pagerank-class-vs-csr
 ["graphs"]: https://github.com/puzzlef/graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
