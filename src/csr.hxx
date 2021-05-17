@@ -281,3 +281,36 @@ template <class G, class K=int>
 auto destinationIndicesHybrid(const G& x, K blk) {
   return destinationIndicesHybrid(x, x.vertices(), blk);
 }
+
+
+
+
+// CSR-EQUAL
+// ---------
+
+template <class T, class U, class V, class W>
+bool csrDestinationIndicesEqual(const HybridCsr<T, U>& x, const Csr<V, W>& y, int xi, int yi) {
+  auto xes = slice(x.destinationIndices, x.sourceOffsets[xi], x.sourceOffsets[xi+1]);
+  auto yes = slice(y.destinationIndices, y.sourceOffsets[yi], y.sourceOffsets[yi+1]);
+  int blk = x.blockSize, blk2 = int(log(blk)/log(2));
+  for (auto xe : xes) {
+    auto xid  = hybridCsrId(xe, blk);
+    auto xblk = hybridCsrBlock(xe, blk);
+    for (int j=0; xblk>0; xblk>>=1, j++) {
+      if (xblk&1 == 0) continue;
+      if (findIndex(yes, (xid<<blk2)|j) < 0) return false;
+    }
+  }
+  return true;
+}
+
+
+template <class T, class U, class V, class W>
+bool csrEqual(const HybridCsr<T, U>& x, const Csr<V, W>& y) {
+  int X = x.sourceOffsets.size();
+  int Y = y.sourceOffsets.size();
+  if (X != Y) return false;
+  for (int i=0; i<X; i++)
+    if (!csrDestinationIndicesEqual(x, y, i, i)) return false;
+  return true;
+}
