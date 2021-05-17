@@ -1,11 +1,13 @@
 #pragma once
 #include <cmath>
 #include <vector>
+#include <utility>
 #include "_main.hxx"
 #include "edges.hxx"
 
 using std::vector;
 using std::log;
+using std::move;
 
 
 
@@ -13,11 +15,106 @@ using std::log;
 // CSR
 // ---
 
-template <class T>
-void csrAdd(vector<T>& a, T v) {
-  int i = findIndex(a, v);
-  if (i<0) a.push_back(v);
+template <class T, class U=T>
+struct Csr {
+  vector<T> sourceOffsets;
+  vector<U> destinationIndices;
+
+  Csr() = default;
+  Csr(vector<T>&& vto, vector<U>&& eto) :
+  sourceOffsets(vto), destinationIndices(eto) {}
+  Csr(vector<T>& vto, vector<U>& eto) :
+  sourceOffsets(move(vto)), destinationIndices(move(eto)) {}
+};
+
+
+template <class G, class J>
+auto csr(const G& x, J&& ks) {
+  Csr<int, int> a;
+  auto& vto = a.sourceOffsets;
+  auto& eto = a.destinationIndices;
+  auto ids  = indices(ks);
+  int i = 0;
+  for (int u : ks) {
+    vto.push_back(eto.size());
+    for (int v : x.edges(u))
+      eto.push_back(ids[v]);
+    // sort(eto.end()-x.degree(u), eto.end());
+  }
+  vto.push_back(eto.size());
+  return a;
 }
+
+
+
+
+// CSR SOURCE-OFFSETS
+// ------------------
+
+template <class G, class J>
+auto sourceOffsets(const G& x, J&& ks, int N) {
+  int i = 0;
+  vector<int> a;
+  if (N>0) a.reserve(N+1);
+  for (auto u : ks) {
+    a.push_back(i);
+    i += x.degree(u);
+  }
+  a.push_back(i);
+  return a;
+}
+
+template <class G, class J>
+auto sourceOffsets(const G& x, J&& ks) {
+  return sourceOffsets(x, ks, csize(ks));
+}
+
+template <class G>
+auto sourceOffsets(const G& x) {
+  return sourceOffsets(x, x.vertices(), x.order());
+}
+
+
+
+
+// CSR DESTINATION-INDICES
+// -----------------------
+
+template <class G, class J>
+auto destinationIndices(const G& x, J&& ks) {
+  auto ids = indices(ks);
+  vector<int> a;
+  for (int u : ks) {
+    for (int v : x.edges(u))
+      a.push_back(ids[v]);
+    // sort(a.end()-x.degree(u), a.end());
+  }
+  return a;
+}
+
+template <class G>
+auto destinationIndices(const G& x) {
+  return destinationIndices(x, x.vertices());
+}
+
+
+
+
+// HYBRID-CSR
+// ----------
+
+template <class T, class U=T>
+struct HybridCsr : public Csr<T, U> {
+  int blockSize;
+  vector<T> sourceOffsets;
+  vector<U> destinationIndices;
+
+  HybridCsr(int blk=4) : blockSize(blk) {}
+  HybridCsr(int blk, vector<T>&& vto, vector<T>&& eto) :
+  blockSize(blk), sourceOffsets(vto), destinationIndices(eto) {}
+  HybridCsr(int blk, vector<T>& vto, vector<T>& eto) :
+  blockSize(blk), sourceOffsets(move(vto)), destinationIndices(move(eto)) {}
+};
 
 
 
@@ -108,37 +205,33 @@ void hybridCsrSortedAdd(vector<T>& a, T v, int blk) {
 
 
 
-// SOURCE-OFFSETS
-// --------------
+// HYBRID-CSR
+// ----------
 
-template <class G, class J>
-auto sourceOffsets(const G& x, J&& ks, int N) {
+template <class G, class J, class K=int>
+auto hybridCsr(const G& x, J&& ks, K blk=4) {
+  HybridCsr<int, K> a(blk);
+  auto& vto = a.sourceOffsets;
+  auto& eto = a.destinationIndices;
+  auto ids  = indices(ks);
   int i = 0;
-  vector<int> a;
-  if (N>0) a.reserve(N+1);
-  for (auto u : ks) {
-    a.push_back(i);
-    i += x.degree(u);
+  for (int u : ks) {
+    vto.push_back(eto.size());
+    auto vs = edges(x, u, [&](int v) { return ids[v]; });
+    sort(vs.begin(), vs.end());
+    if (!vs.empty()) hybridCsrPush(eto, K(vs[0]), blk);
+    for (int v : slice(vs, 1))
+      hybridCsrSortedAdd(eto, K(v), blk);
   }
-  a.push_back(i);
+  vto.push_back(eto.size());
   return a;
 }
 
-template <class G, class J>
-auto sourceOffsets(const G& x, J&& ks) {
-  return sourceOffsets(x, ks, csize(ks));
-}
-
-template <class G>
-auto sourceOffsets(const G& x) {
-  return sourceOffsets(x, x.vertices(), x.order());
-}
 
 
 
-
-// SOURCE-OFFSETS-HYBRID
-// ---------------------
+// HYBRID-CSR SOURCE-OFFSETS
+// -------------------------
 
 template <class G, class J, class K=int>
 auto sourceOffsetsHybrid(const G& x, J&& ks, K blk) {
@@ -167,31 +260,8 @@ auto sourceOffsetsHybrid(const G& x, K blk) {
 
 
 
-// DESTINATION-INDICES
-// -------------------
-
-template <class G, class J>
-auto destinationIndices(const G& x, J&& ks) {
-  auto ids = indices(ks);
-  vector<int> a;
-  for (int u : ks) {
-    for (int v : x.edges(u))
-      a.push_back(ids[v]);
-    // sort(a.end()-x.degree(u), a.end());
-  }
-  return a;
-}
-
-template <class G>
-auto destinationIndices(const G& x) {
-  return destinationIndices(x, x.vertices());
-}
-
-
-
-
-// DESTINATION-INDICES-HYBRID
-// --------------------------
+// HYBRID-CSR DESTINATION-INDICES
+// ------------------------------
 
 template <class G, class J, class K=int>
 auto destinationIndicesHybrid(const G& x, J&& ks, K blk) {
