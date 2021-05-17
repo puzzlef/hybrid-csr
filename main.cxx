@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <cstdio>
 #include <iostream>
 #include "src/main.hxx"
@@ -7,23 +8,62 @@ using namespace std;
 
 
 
-template <class G, class H>
-void runPagerank(const G& x, const H& xt, bool show) {
-  int repeat = 5;
-  vector<float>  *initFloat  = nullptr;
-  vector<double> *initDouble = nullptr;
+template <class C>
+void runCsrPrint(const char *name, const vector<int>& vto, const C& eto) {
+  using T = typename C::value_type;
+  size_t so = vto.size(), di = eto.size(), sz = so*sizeof(int) + di*sizeof(T);
+  printf("[%08zu bytes %06zu source-offsets %06zu destination-indices] %s\n", sz, so, di, name);
+}
 
-  // Find pagerank using 32-bit floats.
-  auto a1 = pagerankSeq(xt, initFloat, {repeat});
-  auto e1 = absError(a1.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankFloat\n", a1.time, a1.iterations, e1);
-  if (show) println(a1.ranks);
+template <class G>
+void runCsr(const G& x, bool show) {
+  auto vto = sourceOffsets(x);
 
-  // Find pagerank using 64-bit floats.
-  auto a2 = pagerankSeq(xt, initDouble, {repeat});
-  auto e2 = absError(a2.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankDouble\n", a2.time, a2.iterations, e2);
-  if (show) println(a2.ranks);
+  // Find space usage of regular CSR.
+  auto eto = destinationIndices(x);
+  runCsrPrint("csrRegular", vto, eto);
+
+  // Find space usage of 32bit hybrid CSR with 4bit block, 28bit index (30 eff.).
+  if (x.span() < (1L << 30)) {
+    auto eto = destinationIndicesHybrid(x, uint32_t(4));
+    runCsrPrint("csrHybrid32 [4bit block, 28bit index (30 eff.)]", vto, eto);
+  }
+
+  // Find space usage of 32bit hybrid CSR with 8bit block, 24bit index (27 eff.).
+  if (x.span() < (1L << 27)) {
+    auto eto = destinationIndicesHybrid(x, uint32_t(8));
+    runCsrPrint("csrHybrid32 [8bit block, 24bit index (27 eff.)]", vto, eto);
+  }
+
+  // Find space usage of 32bit hybrid CSR with 16bit block, 16bit index (20 eff.).
+  if (x.span() < (1L << 20)) {
+    auto eto = destinationIndicesHybrid(x, uint32_t(16));
+    runCsrPrint("csrHybrid32 [16bit block, 16bit index (20 eff.)]", vto, eto);
+  }
+
+  // Find space usage of 64bit hybrid CSR with 4bit block, 60bit index (62 eff.).
+  if (x.span() < (1L << 62)) {
+    auto eto = destinationIndicesHybrid(x, uint64_t(4));
+    runCsrPrint("csrHybrid64 [4bit block, 60bit index (62 eff.)]", vto, eto);
+  }
+
+  // Find space usage of 64bit hybrid CSR with 8bit block, 56bit index (59 eff.).
+  if (x.span() < (1L << 59)) {
+    auto eto = destinationIndicesHybrid(x, uint64_t(8));
+    runCsrPrint("csrHybrid64 [8bit block, 56bit index (59 eff.)]", vto, eto);
+  }
+
+  // Find space usage of 64bit hybrid CSR with 16bit block, 48bit index (52 eff.).
+  if (x.span() < (1L << 52)) {
+    auto eto = destinationIndicesHybrid(x, uint64_t(16));
+    runCsrPrint("csrHybrid64 [16bit block, 48bit index (52 eff.)]", vto, eto);
+  }
+
+  // Find space usage of 64bit hybrid CSR with 32bit block, 32bit index (37 eff.).
+  if (x.span() < (1L << 37)) {
+    auto eto = destinationIndicesHybrid(x, uint64_t(32));
+    runCsrPrint("csrHybrid64 [32bit block, 32bit index (37 eff.)]", vto, eto);
+  }
 }
 
 
@@ -32,8 +72,7 @@ int main(int argc, char **argv) {
   bool  show = argc > 2;
   printf("Loading graph %s ...\n", file);
   auto x  = readMtx(file); println(x);
-  auto xt = transposeWithDegree(x); print(xt); printf(" (transposeWithDegree)\n");
-  runPagerank(x, xt, show);
+  runCsr(x, show);
   printf("\n");
   return 0;
 }

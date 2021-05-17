@@ -225,12 +225,14 @@ int csize(const J& x) {
 
 template <class J>
 auto slice(const J& x, int i) {
-  return sizedIterable(x.begin()+i, x.end());
+  auto ib = x.begin(), ie = x.end();
+  return sizedIterable(ib+i<ie? ib+i : ie, ie);
 }
 
 template <class J>
 auto slice(const J& x, int i, int I) {
-  return sizedIterable(x.begin()+i, x.begin()+I, I-i);
+  auto ib = x.begin(), ie = x.end();
+  return sizedIterable(ib+i<ie? ib+i : ie, ib+I<ie? ib+I : ie, I-i);
 }
 
 

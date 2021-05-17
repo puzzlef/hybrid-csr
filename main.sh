@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-src="pagerank-float-vs-double"
+src="csr-regular-vs-hybrid"
 out="/home/resources/Documents/subhajit/$src.log"
 ulimit -s unlimited
 printf "" > "$out"

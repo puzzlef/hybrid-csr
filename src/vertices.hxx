@@ -116,32 +116,3 @@ template <class G, class T>
 auto compressContainer(const G& x, const vector<T>& vs) {
   return compressContainer(x, vs, x.vertices());
 }
-
-
-
-
-// SOURCE-OFFSETS
-// --------------
-
-template <class G, class J>
-auto sourceOffsets(const G& x, J&& ks, int N) {
-  int i = 0;
-  vector<int> a;
-  if (N>0) a.reserve(N+1);
-  for (auto u : ks) {
-    a.push_back(i);
-    i += x.degree(u);
-  }
-  a.push_back(i);
-  return a;
-}
-
-template <class G, class J>
-auto sourceOffsets(const G& x, J&& ks) {
-  return sourceOffsets(x, ks, csize(ks));
-}
-
-template <class G>
-auto sourceOffsets(const G& x) {
-  return sourceOffsets(x, x.vertices(), x.order());
-}
