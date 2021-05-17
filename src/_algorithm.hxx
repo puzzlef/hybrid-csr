@@ -1,10 +1,12 @@
 #pragma once
 #include <cmath>
 #include <vector>
+#include <unordered_map>
 #include <iterator>
 #include <algorithm>
 
 using std::vector;
+using std::unordered_map;
 using std::iterator_traits;
 using std::back_inserter;
 using std::find;
@@ -51,6 +53,26 @@ int countIf(I ib, I ie, F fn) {
 template <class J, class F>
 int countIf(const J& x, F fn) {
   return count_if(x.begin(), x.end(), fn);
+}
+
+
+
+
+// INDICES
+// -------
+
+template <class I>
+auto indices(I ib, I ie) {
+  using K = typename iterator_traits<I>::value_type;
+  unordered_map<K, int> a; int i = 0;
+  for (I it=ib; it!=ie; ++it)
+    a[*it] = i++;
+  return a;
+}
+
+template <class J>
+auto indices(J&& x) {
+  return indices(x.begin(), x.end());
 }
 
 
