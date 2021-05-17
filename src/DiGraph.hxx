@@ -98,9 +98,4 @@ class DiGraph {
     vex[u] = false;
     N--;
   }
-
-  // Generate operations
-  public:
-  template <class T>
-  auto vertexContainer(T _) const { return vector<T>(s()); }
 };

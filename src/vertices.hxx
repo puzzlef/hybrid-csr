@@ -58,20 +58,63 @@ auto vertexData(G& x) {
 
 
 
-// VERTEX-CONTAINER
-// ----------------
+// CONTAINER
+// ---------
+
+template <class G, class T>
+auto createContainer(const G& x, const T& _) {
+  return vector<T>(x.span());
+}
+
+template <class G, class T>
+auto createCompressedContainer(const G& x, const T& _) {
+  return vector<T>(x.order());
+}
+
 
 template <class G, class T, class J>
-auto vertexContainer(const G& x, const vector<T>& vs, J&& ks) {
-  auto a = x.vertexContainer(T()); int i = 0;
-  for (auto u : ks)
-    a[u] = vs[i++];
+void decompressContainer(vector<T>& a, const G& x, const vector<T>& vs, J&& ks) {
+  scatter(a, vs, ks);
+}
+
+template <class G, class T>
+void decompressContainer(vector<T>& a, const G& x, const vector<T>& vs) {
+  decompressContainer(a, x, vs, x.vertices());
+}
+
+template <class G, class T, class J>
+auto decompressContainer(const G& x, const vector<T>& vs, J&& ks) {
+  auto a = createContainer(x, T());
+  decompressContainer(a, x, vs, ks);
   return a;
 }
 
 template <class G, class T>
-auto vertexContainer(const G& x, const vector<T>& vs) {
-  return vertexContainer(x, vs, x.vertices());
+auto decompressContainer(const G& x, const vector<T>& vs) {
+  return decompressContainer(x, vs, x.vertices());
+}
+
+
+template <class G, class T, class J>
+void compressContainer(vector<T>& a, const G& x, const vector<T>& vs, J&& ks) {
+  gather(a, vs, ks);
+}
+
+template <class G, class T>
+void compressContainer(vector<T>& a, const G& x, const vector<T>& vs) {
+  return compressContainer(a, x, vs, x.vertices());
+}
+
+template <class G, class T, class J>
+auto compressContainer(const G& x, const vector<T>& vs, J&& ks) {
+  auto a = createCompressedContainer(x, T());
+  compressContainer(a, x, vs, ks);
+  return a;
+}
+
+template <class G, class T>
+auto compressContainer(const G& x, const vector<T>& vs) {
+  return compressContainer(x, vs, x.vertices());
 }
 
 
