@@ -1,9 +1,12 @@
 #pragma once
 #include <iterator>
+#include <unordered_map>
 #include <algorithm>
 
+using std::iterator_traits;
 using std::forward_iterator_tag;
 using std::random_access_iterator_tag;
+using std::unordered_map;
 using std::distance;
 using std::max;
 
@@ -346,4 +349,24 @@ template <class T>
 auto range(T v, T V, T DV=1) {
   auto x = range(rangeSize(v, V, DV));
   return transform(x, [=](int n) { return v+DV*n; });
+}
+
+
+
+
+// INDICES
+// -------
+
+template <class I>
+auto indices(I ib, I ie) {
+  using K = typename iterator_traits<I>::value_type;
+  unordered_map<K, int> a; int i = 0;
+  for (I it=ib; it!=ie; ++it)
+    a[*it] = i++;
+  return a;
+}
+
+template <class J>
+auto indices(J&& x) {
+  return indices(x.begin(), x.end());
 }
