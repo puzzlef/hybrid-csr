@@ -146,6 +146,7 @@ order: 4847571 size: 68993773 {}
 [295365380 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular
 [259873684 bytes 4847572 source-offsets 60120849 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 [246424504 bytes 4847572 source-offsets 56758554 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
 [500357080 bytes 4847572 source-offsets 60120849 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
 [473458720 bytes 4847572 source-offsets 56758554 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
 [450554736 bytes 4847572 source-offsets 53895556 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
@@ -178,6 +179,7 @@ order: 7414866 size: 194109311 {}
 [806096712 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular
 [308575068 bytes 7414867 source-offsets 69728900 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 [215743112 bytes 7414867 source-offsets 46520911 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
 [587490668 bytes 7414867 source-offsets 69728900 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
 [401826756 bytes 7414867 source-offsets 46520911 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
 [301548740 bytes 7414867 source-offsets 33986159 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
@@ -188,6 +190,7 @@ order: 6686493 size: 14027956 {}
 [82857800 bytes 6686494 source-offsets 14027956 destination-indices] csrRegular
 [71335908 bytes 6686494 source-offsets 11147483 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 [65529768 bytes 6686494 source-offsets 9695948 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
 [115925840 bytes 6686494 source-offsets 11147483 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
 [104313560 bytes 6686494 source-offsets 9695948 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
 [98059912 bytes 6686494 source-offsets 8914242 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
@@ -198,6 +201,7 @@ order: 7733822 size: 16313034 {}
 [96187428 bytes 7733823 source-offsets 16313034 destination-indices] csrRegular
 [84615244 bytes 7733823 source-offsets 13419988 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 [78697504 bytes 7733823 source-offsets 11940553 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
 [138295196 bytes 7733823 source-offsets 13419988 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
 [126459716 bytes 7733823 source-offsets 11940553 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
 [119628100 bytes 7733823 source-offsets 11086601 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
@@ -208,6 +212,7 @@ order: 11548845 size: 24738362 {}
 [145148832 bytes 11548846 source-offsets 24738362 destination-indices] csrRegular
 [127947988 bytes 11548846 source-offsets 20438151 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 [119124240 bytes 11548846 source-offsets 18232214 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
 [209700592 bytes 11548846 source-offsets 20438151 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
 [192053096 bytes 11548846 source-offsets 18232214 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
 [182091520 bytes 11548846 source-offsets 16987017 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
@@ -218,6 +223,7 @@ order: 11950757 size: 25423206 {}
 [149495856 bytes 11950758 source-offsets 25423206 destination-indices] csrRegular
 [129113856 bytes 11950758 source-offsets 20327706 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 [118836148 bytes 11950758 source-offsets 17758279 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
 [210424680 bytes 11950758 source-offsets 20327706 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
 [189869264 bytes 11950758 source-offsets 17758279 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
 [178640648 bytes 11950758 source-offsets 16354702 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]

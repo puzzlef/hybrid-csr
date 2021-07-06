@@ -3,5 +3,5 @@
 #include "DiGraph.hxx"
 #include "vertices.hxx"
 #include "edges.hxx"
-#include "mtx.hxx"
 #include "csr.hxx"
+#include "mtx.hxx"

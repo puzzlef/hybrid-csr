@@ -18,54 +18,43 @@ void runCsrPrint(const char *name, const C& csr) {
   printf("[%zu bytes %zu source-offsets %zu destination-indices] %s\n", sz, so, di, name);
 }
 
+
 template <class G>
 void runCsr(const G& x, bool show) {
+  int S = x.span();
+  G empty;
 
   // Find space usage of regular CSR.
   auto csr1 = csr(x);
   runCsrPrint("csrRegular", csr1);
 
   // Find space usage of 32bit hybrid CSR with 4bit block, 28bit index (30 eff.).
-  if (x.span() < (1L << 30)) {
-    auto csr2 = hybridCsr(x, uint32_t(4));
-    runCsrPrint("csrHybrid32 [4bit block, 28bit index (30 eff.)]", csr2);
-  }
+  auto csr2 = hybridCsr(S < (1L<<30)? x:empty, uint32_t(4));
+  runCsrPrint("csrHybrid32 [4bit block, 28bit index (30 eff.)]", csr2);
 
   // Find space usage of 32bit hybrid CSR with 8bit block, 24bit index (27 eff.).
-  if (x.span() < (1L << 27)) {
-    auto csr3 = hybridCsr(x, uint32_t(8));
-    runCsrPrint("csrHybrid32 [8bit block, 24bit index (27 eff.)]", csr3);
-  }
+  auto csr3 = hybridCsr(S < (1L<<27)? x:empty, uint32_t(8));
+  runCsrPrint("csrHybrid32 [8bit block, 24bit index (27 eff.)]", csr3);
 
   // Find space usage of 32bit hybrid CSR with 16bit block, 16bit index (20 eff.).
-  if (x.span() < (1L << 20)) {
-    auto csr4 = hybridCsr(x, uint32_t(16));
-    runCsrPrint("csrHybrid32 [16bit block, 16bit index (20 eff.)]", csr4);
-  }
+  auto csr4 = hybridCsr(S < (1L<<20)? x:empty, uint32_t(16));
+  runCsrPrint("csrHybrid32 [16bit block, 16bit index (20 eff.)]", csr4);
 
   // Find space usage of 64bit hybrid CSR with 4bit block, 60bit index (62 eff.).
-  if (x.span() < (1L << 62)) {
-    auto csr5 = hybridCsr(x, uint64_t(4));
-    runCsrPrint("csrHybrid64 [4bit block, 60bit index (62 eff.)]", csr5);
-  }
+  auto csr5 = hybridCsr(S < (1L<<62)? x:empty, uint64_t(4));
+  runCsrPrint("csrHybrid64 [4bit block, 60bit index (62 eff.)]", csr5);
 
   // Find space usage of 64bit hybrid CSR with 8bit block, 56bit index (59 eff.).
-  if (x.span() < (1L << 59)) {
-    auto csr6 = hybridCsr(x, uint64_t(8));
-    runCsrPrint("csrHybrid64 [8bit block, 56bit index (59 eff.)]", csr6);
-  }
+  auto csr6 = hybridCsr(S < (1L<<59)? x:empty, uint64_t(8));
+  runCsrPrint("csrHybrid64 [8bit block, 56bit index (59 eff.)]", csr6);
 
   // Find space usage of 64bit hybrid CSR with 16bit block, 48bit index (52 eff.).
-  if (x.span() < (1L << 52)) {
-    auto csr7 = hybridCsr(x, uint64_t(16));
-    runCsrPrint("csrHybrid64 [16bit block, 48bit index (52 eff.)]", csr7);
-  }
+  auto csr7 = hybridCsr(S < (1L<<52)? x:empty, uint64_t(16));
+  runCsrPrint("csrHybrid64 [16bit block, 48bit index (52 eff.)]", csr7);
 
   // Find space usage of 64bit hybrid CSR with 32bit block, 32bit index (37 eff.).
-  if (x.span() < (1L << 37)) {
-    auto csr8 = hybridCsr(x, uint64_t(32));
-    runCsrPrint("csrHybrid64 [32bit block, 32bit index (37 eff.)]", csr8);
-  }
+  auto csr8 = hybridCsr(S < (1L<<37)? x:empty, uint64_t(32));
+  runCsrPrint("csrHybrid64 [32bit block, 32bit index (37 eff.)]", csr8);
 }
 
 
