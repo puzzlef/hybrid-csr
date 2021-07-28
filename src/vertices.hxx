@@ -1,8 +1,12 @@
 #pragma once
 #include <vector>
+#include <iterator>
+#include <algorithm>
 #include "_main.hxx"
 
 using std::vector;
+using std::transform;
+using std::back_inserter;
 
 
 
@@ -10,23 +14,23 @@ using std::vector;
 // VERTICES
 // --------
 
-template <class G>
-auto vertices(const G& x) {
+template <class G, class F, class D>
+auto vertices(const G& x, F fm, D fp) {
   vector<int> a;
-  a.reserve(x.order());
-  for (int u : x.vertices())
-    a.push_back(u);
+  append(a, x.vertices());
+  auto ie = a.end(), ib = a.begin();
+  fp(ib, ie); transform(ib, ie, ib, fm);
   return a;
 }
 
-
 template <class G, class F>
-auto verticesBy(const G& x, F fm) {
-  auto a = vertices(x);
-  sort(a.begin(), a.end(), [&](int u, int v) {
-    return fm(u) < fm(v);
-  });
-  return a;
+auto vertices(const G& x, F fm) {
+  return vertices(x, fm, [](auto ib, auto ie) {});
+}
+
+template <class G>
+auto vertices(const G& x) {
+  return vertices(x, [](int u) { return u; });
 }
 
 
@@ -35,24 +39,30 @@ auto verticesBy(const G& x, F fm) {
 // VERTEX-DATA
 // -----------
 
-template <class G, class J>
-auto vertexData(const G& x, J&& ks, int N) {
-  using V = typename G::TVertex;
+template <class G, class J, class F, class D>
+auto vertexData(const G& x, J&& ks, F fm, D fp) {
+  using V = decltype(fm(0));
   vector<V> a;
-  if (N>0) a.reserve(N);
-  for (int u : ks)
-    a.push_back(x.vertexData(u));
+  vector<int> b;
+  append(b, ks);
+  auto ie = b.end(), ib = b.begin();
+  fp(ib, ie); transform(ib, ie, back_inserter(a), fm);
   return a;
+}
+
+template <class G, class J, class F>
+auto vertexData(const G& x, J&& ks, F fm) {
+  return vertexData(x, ks, fm, [](auto ib, auto ie) {});
 }
 
 template <class G, class J>
 auto vertexData(const G& x, J&& ks) {
-  return vertexData(x, ks, csize(ks));
+  return vertexData(x, ks, [&](int u) { return x.vertexData(u); });
 }
 
 template <class G>
-auto vertexData(G& x) {
-  return vertexData(x, x.vertices(), x.order());
+auto vertexData(const G& x) {
+  return vertexData(x, x.vertices());
 }
 
 
@@ -115,4 +125,21 @@ auto compressContainer(const G& x, const vector<T>& vs, J&& ks) {
 template <class G, class T>
 auto compressContainer(const G& x, const vector<T>& vs) {
   return compressContainer(x, vs, x.vertices());
+}
+
+
+
+
+// VERTICES-EQUAL
+// --------------
+
+template <class G>
+bool verticesEqual(const G& x, int u, const G& y, int v) {
+  if (x.degree(u) != y.degree(v)) return false;
+  auto uj = x.edges(u), vj = y.edges(v);
+  auto ui = uj.begin(), ue = uj.end();
+  auto vi = vj.begin(), ve = vj.end();
+  for (; ui!=ue && vi!=ve; ++ui, ++vi)
+    if (*ui != *vi) return false;
+  return true;
 }
