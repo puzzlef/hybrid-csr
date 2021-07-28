@@ -124,6 +124,60 @@ int countIf(const J& x, F fn) {
 
 
 
+// MIN
+// ---
+
+template <class I>
+auto minElement(I ib, I ie) {
+  return min_element(ib, ie);
+}
+
+template <class I, class F>
+auto minElement(I ib, I ie, F fl) {
+  return min_element(ib, ie, fl);
+}
+
+
+template <class J>
+auto minElement(const J& x) {
+  return min_element(x.begin(), x.end());
+}
+
+template <class J, class F>
+auto minElement(const J& x, F fl) {
+  return min_element(x.begin(), x.end(), fl);
+}
+
+
+
+
+// MAX
+// ---
+
+template <class I>
+auto maxElement(I ib, I ie) {
+  return max_element(ib, ie);
+}
+
+template <class I, class F>
+auto maxElement(I ib, I ie, F fl) {
+  return max_element(ib, ie, fl);
+}
+
+
+template <class J>
+auto maxElement(const J& x) {
+  return max_element(x.begin(), x.end());
+}
+
+template <class J, class F>
+auto maxElement(const J& x, F fl) {
+  return max_element(x.begin(), x.end(), fl);
+}
+
+
+
+
 // INDICES
 // -------
 

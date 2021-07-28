@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-src="csr-regular-vs-hybrid"
+src="csr-regular-vs-hybrid-with-split-components"
 out="/home/resources/Documents/subhajit/$src.log"
 ulimit -s unlimited
 printf "" > "$out"

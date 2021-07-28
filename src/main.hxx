@@ -7,3 +7,6 @@
 #include "mtx.hxx"
 #include "copy.hxx"
 #include "transpose.hxx"
+#include "dfs.hxx"
+#include "topologicalSort.hxx"
+#include "components.hxx"
