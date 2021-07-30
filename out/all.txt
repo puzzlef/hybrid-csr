@@ -1,0 +1,566 @@
+Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
+order: 5 size: 6 {}
+order: 5 size: 6 {} (transposeWithDegree)
+components: 5 min-size: 1 max-size: 1
+
+# Mode: unsorted
+[48 bytes 6 source-offsets 6 destination-indices] csrRegular32
+[96 bytes 6 source-offsets 6 destination-indices] csrRegular64
+[40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[48 bytes 6 source-offsets 6 destination-indices] csrRegular32
+[96 bytes 6 source-offsets 6 destination-indices] csrRegular64
+[40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[40 bytes 6 source-offsets 4 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[56 bytes 6 source-offsets 4 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/min-2SCC.mtx ...
+order: 8 size: 12 {}
+order: 8 size: 12 {} (transposeWithDegree)
+components: 2 min-size: 4 max-size: 4
+
+# Mode: unsorted
+[84 bytes 9 source-offsets 12 destination-indices] csrRegular32
+[168 bytes 9 source-offsets 12 destination-indices] csrRegular64
+[76 bytes 9 source-offsets 10 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[68 bytes 9 source-offsets 8 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[68 bytes 9 source-offsets 8 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[116 bytes 9 source-offsets 10 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[84 bytes 9 source-offsets 12 destination-indices] csrRegular32
+[168 bytes 9 source-offsets 12 destination-indices] csrRegular64
+[76 bytes 9 source-offsets 10 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[68 bytes 9 source-offsets 8 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[68 bytes 9 source-offsets 8 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[116 bytes 9 source-offsets 10 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[100 bytes 9 source-offsets 8 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/min-4SCC.mtx ...
+order: 21 size: 35 {}
+order: 21 size: 35 {} (transposeWithDegree)
+components: 4 min-size: 4 max-size: 8
+
+# Mode: unsorted
+[228 bytes 22 source-offsets 35 destination-indices] csrRegular32
+[456 bytes 22 source-offsets 35 destination-indices] csrRegular64
+[224 bytes 22 source-offsets 34 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[208 bytes 22 source-offsets 30 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[192 bytes 22 source-offsets 26 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[360 bytes 22 source-offsets 34 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[328 bytes 22 source-offsets 30 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[296 bytes 22 source-offsets 26 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[256 bytes 22 source-offsets 21 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[228 bytes 22 source-offsets 35 destination-indices] csrRegular32
+[456 bytes 22 source-offsets 35 destination-indices] csrRegular64
+[224 bytes 22 source-offsets 34 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[196 bytes 22 source-offsets 27 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[184 bytes 22 source-offsets 24 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[360 bytes 22 source-offsets 34 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[304 bytes 22 source-offsets 27 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[280 bytes 22 source-offsets 24 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[256 bytes 22 source-offsets 21 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
+order: 6 size: 10 {}
+order: 6 size: 10 {} (transposeWithDegree)
+components: 3 min-size: 1 max-size: 3
+
+# Mode: unsorted
+[68 bytes 7 source-offsets 10 destination-indices] csrRegular32
+[136 bytes 7 source-offsets 10 destination-indices] csrRegular64
+[64 bytes 7 source-offsets 9 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[48 bytes 7 source-offsets 5 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[48 bytes 7 source-offsets 5 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[100 bytes 7 source-offsets 9 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[68 bytes 7 source-offsets 10 destination-indices] csrRegular32
+[136 bytes 7 source-offsets 10 destination-indices] csrRegular64
+[64 bytes 7 source-offsets 9 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[48 bytes 7 source-offsets 5 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[48 bytes 7 source-offsets 5 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[100 bytes 7 source-offsets 9 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[68 bytes 7 source-offsets 5 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/web-Stanford.mtx ...
+order: 281903 size: 2312497 {}
+order: 281903 size: 2312497 {} (transposeWithDegree)
+components: 29914 min-size: 1 max-size: 150532
+
+# Mode: unsorted
+[10377604 bytes 281904 source-offsets 2312497 destination-indices] csrRegular32
+[20755208 bytes 281904 source-offsets 2312497 destination-indices] csrRegular64
+[8632236 bytes 281904 source-offsets 1876155 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[7835548 bytes 281904 source-offsets 1676983 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[7222928 bytes 281904 source-offsets 1523828 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[16136856 bytes 281904 source-offsets 1876155 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[14543480 bytes 281904 source-offsets 1676983 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[13318240 bytes 281904 source-offsets 1523828 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[12097488 bytes 281904 source-offsets 1371234 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[10377604 bytes 281904 source-offsets 2312497 destination-indices] csrRegular32
+[20755208 bytes 281904 source-offsets 2312497 destination-indices] csrRegular64
+[8619888 bytes 281904 source-offsets 1873068 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[7826140 bytes 281904 source-offsets 1674631 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[7212668 bytes 281904 source-offsets 1521263 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[16112160 bytes 281904 source-offsets 1873068 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[14524664 bytes 281904 source-offsets 1674631 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[13297720 bytes 281904 source-offsets 1521263 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[12090240 bytes 281904 source-offsets 1370328 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/web-BerkStan.mtx ...
+order: 685230 size: 7600595 {}
+order: 685230 size: 7600595 {} (transposeWithDegree)
+components: 109406 min-size: 1 max-size: 334857
+
+# Mode: unsorted
+[33143304 bytes 685231 source-offsets 7600595 destination-indices] csrRegular32
+[66286608 bytes 685231 source-offsets 7600595 destination-indices] csrRegular64
+[23488580 bytes 685231 source-offsets 5186914 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[20409092 bytes 685231 source-offsets 4417042 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[18446688 bytes 685231 source-offsets 3926441 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[44236236 bytes 685231 source-offsets 5186914 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[38077260 bytes 685231 source-offsets 4417042 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[34152452 bytes 685231 source-offsets 3926441 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[30853092 bytes 685231 source-offsets 3514021 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[33143304 bytes 685231 source-offsets 7600595 destination-indices] csrRegular32
+[66286608 bytes 685231 source-offsets 7600595 destination-indices] csrRegular64
+[23618452 bytes 685231 source-offsets 5219382 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[20610020 bytes 685231 source-offsets 4467274 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[18523432 bytes 685231 source-offsets 3945627 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[44495980 bytes 685231 source-offsets 5219382 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[38479116 bytes 685231 source-offsets 4467274 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[34305940 bytes 685231 source-offsets 3945627 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[30878020 bytes 685231 source-offsets 3517137 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/web-Google.mtx ...
+order: 916428 size: 5105039 {}
+order: 916428 size: 5105039 {} (transposeWithDegree)
+components: 412479 min-size: 1 max-size: 434818
+
+# Mode: unsorted
+[24085872 bytes 916429 source-offsets 5105039 destination-indices] csrRegular32
+[48171744 bytes 916429 source-offsets 5105039 destination-indices] csrRegular64
+[18601824 bytes 916429 source-offsets 3734027 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[16494372 bytes 916429 source-offsets 3207164 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[14900940 bytes 916429 source-offsets 2808806 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[33537932 bytes 916429 source-offsets 3734027 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[29323028 bytes 916429 source-offsets 3207164 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[26136164 bytes 916429 source-offsets 2808806 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[23789708 bytes 916429 source-offsets 2515499 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[24085872 bytes 916429 source-offsets 5105039 destination-indices] csrRegular32
+[48171744 bytes 916429 source-offsets 5105039 destination-indices] csrRegular64
+[18534816 bytes 916429 source-offsets 3717275 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[16419588 bytes 916429 source-offsets 3188468 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[14826012 bytes 916429 source-offsets 2790074 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[33403916 bytes 916429 source-offsets 3717275 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[29173460 bytes 916429 source-offsets 3188468 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[25986308 bytes 916429 source-offsets 2790074 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[23651820 bytes 916429 source-offsets 2498263 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/web-NotreDame.mtx ...
+order: 325729 size: 1497134 {}
+order: 325729 size: 1497134 {} (transposeWithDegree)
+components: 203609 min-size: 1 max-size: 53968
+
+# Mode: unsorted
+[7291456 bytes 325730 source-offsets 1497134 destination-indices] csrRegular32
+[14582912 bytes 325730 source-offsets 1497134 destination-indices] csrRegular64
+[4409936 bytes 325730 source-offsets 776754 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[3776112 bytes 325730 source-offsets 618298 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3379048 bytes 325730 source-offsets 519032 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[7516952 bytes 325730 source-offsets 776754 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[6249304 bytes 325730 source-offsets 618298 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[5455176 bytes 325730 source-offsets 519032 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[4916168 bytes 325730 source-offsets 451656 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[7291456 bytes 325730 source-offsets 1497134 destination-indices] csrRegular32
+[14582912 bytes 325730 source-offsets 1497134 destination-indices] csrRegular64
+[4415668 bytes 325730 source-offsets 778187 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[3782600 bytes 325730 source-offsets 619920 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3402508 bytes 325730 source-offsets 524897 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[7528416 bytes 325730 source-offsets 778187 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[6262280 bytes 325730 source-offsets 619920 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[5502096 bytes 325730 source-offsets 524897 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[4924496 bytes 325730 source-offsets 452697 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
+order: 77360 size: 905468 {}
+order: 77360 size: 905468 {} (transposeWithDegree)
+components: 6724 min-size: 1 max-size: 70355
+
+# Mode: unsorted
+[3931316 bytes 77361 source-offsets 905468 destination-indices] csrRegular32
+[7862632 bytes 77361 source-offsets 905468 destination-indices] csrRegular64
+[3583380 bytes 77361 source-offsets 818484 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[3466820 bytes 77361 source-offsets 789344 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3349380 bytes 77361 source-offsets 759984 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[6857316 bytes 77361 source-offsets 818484 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[6624196 bytes 77361 source-offsets 789344 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[6389316 bytes 77361 source-offsets 759984 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[6119588 bytes 77361 source-offsets 726268 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[3931316 bytes 77361 source-offsets 905468 destination-indices] csrRegular32
+[7862632 bytes 77361 source-offsets 905468 destination-indices] csrRegular64
+[3582768 bytes 77361 source-offsets 818331 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[3466076 bytes 77361 source-offsets 789158 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3348660 bytes 77361 source-offsets 759804 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[6856092 bytes 77361 source-offsets 818331 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[6622708 bytes 77361 source-offsets 789158 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[6387876 bytes 77361 source-offsets 759804 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[6117892 bytes 77361 source-offsets 726056 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
+order: 82168 size: 948464 {}
+order: 82168 size: 948464 {} (transposeWithDegree)
+components: 10559 min-size: 1 max-size: 71307
+
+# Mode: unsorted
+[4122532 bytes 82169 source-offsets 948464 destination-indices] csrRegular32
+[8245064 bytes 82169 source-offsets 948464 destination-indices] csrRegular64
+[3765548 bytes 82169 source-offsets 859218 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[3646024 bytes 82169 source-offsets 829337 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3525984 bytes 82169 source-offsets 799327 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[7202420 bytes 82169 source-offsets 859218 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[6963372 bytes 82169 source-offsets 829337 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[6723292 bytes 82169 source-offsets 799327 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[6430324 bytes 82169 source-offsets 762706 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[4122532 bytes 82169 source-offsets 948464 destination-indices] csrRegular32
+[8245064 bytes 82169 source-offsets 948464 destination-indices] csrRegular64
+[3763712 bytes 82169 source-offsets 858759 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[3645048 bytes 82169 source-offsets 829093 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3525088 bytes 82169 source-offsets 799103 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[7198748 bytes 82169 source-offsets 858759 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[6961420 bytes 82169 source-offsets 829093 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[6721500 bytes 82169 source-offsets 799103 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[6429124 bytes 82169 source-offsets 762556 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
+order: 75888 size: 508837 {}
+order: 75888 size: 508837 {} (transposeWithDegree)
+components: 42185 min-size: 1 max-size: 32223
+
+# Mode: unsorted
+[2338904 bytes 75889 source-offsets 508837 destination-indices] csrRegular32
+[4677808 bytes 75889 source-offsets 508837 destination-indices] csrRegular64
+[2134316 bytes 75889 source-offsets 457690 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[2037216 bytes 75889 source-offsets 433415 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[1933312 bytes 75889 source-offsets 407439 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[3965076 bytes 75889 source-offsets 457690 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[3770876 bytes 75889 source-offsets 433415 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[3563068 bytes 75889 source-offsets 407439 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[3334692 bytes 75889 source-offsets 378892 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[2338904 bytes 75889 source-offsets 508837 destination-indices] csrRegular32
+[4677808 bytes 75889 source-offsets 508837 destination-indices] csrRegular64
+[2132300 bytes 75889 source-offsets 457186 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[2035404 bytes 75889 source-offsets 432962 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[1931880 bytes 75889 source-offsets 407081 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[3961044 bytes 75889 source-offsets 457186 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[3767252 bytes 75889 source-offsets 432962 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[3560204 bytes 75889 source-offsets 407081 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[3331836 bytes 75889 source-offsets 378535 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
+order: 299067 size: 1955352 {}
+order: 299067 size: 1955352 {} (transposeWithDegree)
+components: 1 min-size: 299067 max-size: 299067
+
+# Mode: unsorted
+[9017680 bytes 299068 source-offsets 1955352 destination-indices] csrRegular32
+[18035360 bytes 299068 source-offsets 1955352 destination-indices] csrRegular64
+[6508412 bytes 299068 source-offsets 1328035 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[5823952 bytes 299068 source-offsets 1156920 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[5390220 bytes 299068 source-offsets 1048487 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[11820552 bytes 299068 source-offsets 1328035 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[10451632 bytes 299068 source-offsets 1156920 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[9584168 bytes 299068 source-offsets 1048487 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[9055928 bytes 299068 source-offsets 982457 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[9017680 bytes 299068 source-offsets 1955352 destination-indices] csrRegular32
+[18035360 bytes 299068 source-offsets 1955352 destination-indices] csrRegular64
+[6508412 bytes 299068 source-offsets 1328035 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[5823952 bytes 299068 source-offsets 1156920 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[5390220 bytes 299068 source-offsets 1048487 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[11820552 bytes 299068 source-offsets 1328035 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[10451632 bytes 299068 source-offsets 1156920 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[9584168 bytes 299068 source-offsets 1048487 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[9055928 bytes 299068 source-offsets 982457 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
+order: 227320 size: 1628268 {}
+order: 227320 size: 1628268 {} (transposeWithDegree)
+components: 1 min-size: 227320 max-size: 227320
+
+# Mode: unsorted
+[7422356 bytes 227321 source-offsets 1628268 destination-indices] csrRegular32
+[14844712 bytes 227321 source-offsets 1628268 destination-indices] csrRegular64
+[4798228 bytes 227321 source-offsets 972236 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[4126020 bytes 227321 source-offsets 804184 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3704964 bytes 227321 source-offsets 698920 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[8687172 bytes 227321 source-offsets 972236 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[7342756 bytes 227321 source-offsets 804184 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[6500644 bytes 227321 source-offsets 698920 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[5991492 bytes 227321 source-offsets 635276 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[7422356 bytes 227321 source-offsets 1628268 destination-indices] csrRegular32
+[14844712 bytes 227321 source-offsets 1628268 destination-indices] csrRegular64
+[4798228 bytes 227321 source-offsets 972236 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[4126020 bytes 227321 source-offsets 804184 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[3704964 bytes 227321 source-offsets 698920 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[8687172 bytes 227321 source-offsets 972236 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[7342756 bytes 227321 source-offsets 804184 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[6500644 bytes 227321 source-offsets 698920 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[5991492 bytes 227321 source-offsets 635276 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
+order: 4847571 size: 68993773 {}
+order: 4847571 size: 68993773 {} (transposeWithDegree)
+components: 971232 min-size: 1 max-size: 3828682
+
+# Mode: unsorted
+[295365380 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular32
+[590730760 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular64
+[249980600 bytes 4847572 source-offsets 57647578 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[236215268 bytes 4847572 source-offsets 54206245 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[480570912 bytes 4847572 source-offsets 57647578 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[453040248 bytes 4847572 source-offsets 54206245 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[435587624 bytes 4847572 source-offsets 52024667 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[424543792 bytes 4847572 source-offsets 50644188 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[295365380 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular32
+[590730760 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular64
+[249798992 bytes 4847572 source-offsets 57602176 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[236067340 bytes 4847572 source-offsets 54169263 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[480207696 bytes 4847572 source-offsets 57602176 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[452744392 bytes 4847572 source-offsets 54169263 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[435345216 bytes 4847572 source-offsets 51994366 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[424320160 bytes 4847572 source-offsets 50616234 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
+order: 434102 size: 32073440 {}
+order: 434102 size: 32073440 {} (transposeWithDegree)
+components: 1 min-size: 434102 max-size: 434102
+
+# Mode: unsorted
+[130030172 bytes 434103 source-offsets 32073440 destination-indices] csrRegular32
+[260060344 bytes 434103 source-offsets 32073440 destination-indices] csrRegular64
+[52112740 bytes 434103 source-offsets 12594082 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[35935552 bytes 434103 source-offsets 8549785 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[26181852 bytes 434103 source-offsets 6111360 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[102489068 bytes 434103 source-offsets 12594082 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[70134692 bytes 434103 source-offsets 8549785 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[50627292 bytes 434103 source-offsets 6111360 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[38605588 bytes 434103 source-offsets 4608647 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[130030172 bytes 434103 source-offsets 32073440 destination-indices] csrRegular32
+[260060344 bytes 434103 source-offsets 32073440 destination-indices] csrRegular64
+[52112740 bytes 434103 source-offsets 12594082 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[35935552 bytes 434103 source-offsets 8549785 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[26181852 bytes 434103 source-offsets 6111360 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[102489068 bytes 434103 source-offsets 12594082 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[70134692 bytes 434103 source-offsets 8549785 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[50627292 bytes 434103 source-offsets 6111360 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[38605588 bytes 434103 source-offsets 4608647 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
+order: 540486 size: 30491458 {}
+order: 540486 size: 30491458 {} (transposeWithDegree)
+components: 1 min-size: 540486 max-size: 540486
+
+# Mode: unsorted
+[124127780 bytes 540487 source-offsets 30491458 destination-indices] csrRegular32
+[248255560 bytes 540487 source-offsets 30491458 destination-indices] csrRegular64
+[56144996 bytes 540487 source-offsets 13495762 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[41955776 bytes 540487 source-offsets 9948457 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[33386732 bytes 540487 source-offsets 7806196 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[110128044 bytes 540487 source-offsets 13495762 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[81749604 bytes 540487 source-offsets 9948457 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[64611516 bytes 540487 source-offsets 7806196 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[54046692 bytes 540487 source-offsets 6485593 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[124127780 bytes 540487 source-offsets 30491458 destination-indices] csrRegular32
+[248255560 bytes 540487 source-offsets 30491458 destination-indices] csrRegular64
+[56144996 bytes 540487 source-offsets 13495762 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[41955776 bytes 540487 source-offsets 9948457 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[33386732 bytes 540487 source-offsets 7806196 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[110128044 bytes 540487 source-offsets 13495762 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[81749604 bytes 540487 source-offsets 9948457 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[64611516 bytes 540487 source-offsets 7806196 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[54046692 bytes 540487 source-offsets 6485593 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/indochina-2004.mtx ...
+order: 7414866 size: 194109311 {}
+order: 7414866 size: 194109311 {} (transposeWithDegree)
+components: 1749052 min-size: 1 max-size: 3806327
+
+# Mode: unsorted
+[806096712 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular32
+[1612193424 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular64
+[449093376 bytes 7414867 source-offsets 104858477 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[367454780 bytes 7414867 source-offsets 84448828 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[868527284 bytes 7414867 source-offsets 104858477 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[705250092 bytes 7414867 source-offsets 84448828 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[594060292 bytes 7414867 source-offsets 70550103 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[513814092 bytes 7414867 source-offsets 60519328 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[806096712 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular32
+[1612193424 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular64
+[448635776 bytes 7414867 source-offsets 104744077 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[366129060 bytes 7414867 source-offsets 84117398 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[867612084 bytes 7414867 source-offsets 104744077 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[702598652 bytes 7414867 source-offsets 84117398 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[592940724 bytes 7414867 source-offsets 70410157 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[512712660 bytes 7414867 source-offsets 60381649 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/italy_osm.mtx ...
+order: 6686493 size: 14027956 {}
+order: 6686493 size: 14027956 {} (transposeWithDegree)
+components: 1 min-size: 6686493 max-size: 6686493
+
+# Mode: unsorted
+[82857800 bytes 6686494 source-offsets 14027956 destination-indices] csrRegular32
+[165715600 bytes 6686494 source-offsets 14027956 destination-indices] csrRegular64
+[70435408 bytes 6686494 source-offsets 10922358 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[63993924 bytes 6686494 source-offsets 9311987 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[114124840 bytes 6686494 source-offsets 10922358 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[101241872 bytes 6686494 source-offsets 9311987 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[94235656 bytes 6686494 source-offsets 8436210 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[90213368 bytes 6686494 source-offsets 7933424 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[82857800 bytes 6686494 source-offsets 14027956 destination-indices] csrRegular32
+[165715600 bytes 6686494 source-offsets 14027956 destination-indices] csrRegular64
+[70435408 bytes 6686494 source-offsets 10922358 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[63993924 bytes 6686494 source-offsets 9311987 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[114124840 bytes 6686494 source-offsets 10922358 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[101241872 bytes 6686494 source-offsets 9311987 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[94235656 bytes 6686494 source-offsets 8436210 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[90213368 bytes 6686494 source-offsets 7933424 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/great-britain_osm.mtx ...
+order: 7733822 size: 16313034 {}
+order: 7733822 size: 16313034 {} (transposeWithDegree)
+components: 1 min-size: 7733822 max-size: 7733822
+
+# Mode: unsorted
+[96187428 bytes 7733823 source-offsets 16313034 destination-indices] csrRegular32
+[192374856 bytes 7733823 source-offsets 16313034 destination-indices] csrRegular64
+[83095300 bytes 7733823 source-offsets 13040002 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[76098068 bytes 7733823 source-offsets 11290694 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[135255308 bytes 7733823 source-offsets 13040002 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[121260844 bytes 7733823 source-offsets 11290694 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[113078060 bytes 7733823 source-offsets 10267846 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[107935284 bytes 7733823 source-offsets 9624999 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[96187428 bytes 7733823 source-offsets 16313034 destination-indices] csrRegular32
+[192374856 bytes 7733823 source-offsets 16313034 destination-indices] csrRegular64
+[83095300 bytes 7733823 source-offsets 13040002 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[76098068 bytes 7733823 source-offsets 11290694 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[135255308 bytes 7733823 source-offsets 13040002 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[121260844 bytes 7733823 source-offsets 11290694 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[113078060 bytes 7733823 source-offsets 10267846 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[107935284 bytes 7733823 source-offsets 9624999 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/germany_osm.mtx ...
+order: 11548845 size: 24738362 {}
+order: 11548845 size: 24738362 {} (transposeWithDegree)
+components: 1 min-size: 11548845 max-size: 11548845
+
+# Mode: unsorted
+[145148832 bytes 11548846 source-offsets 24738362 destination-indices] csrRegular32
+[290297664 bytes 11548846 source-offsets 24738362 destination-indices] csrRegular64
+[125217804 bytes 11548846 source-offsets 19755605 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[114539312 bytes 11548846 source-offsets 17085982 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[204240224 bytes 11548846 source-offsets 19755605 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[182883240 bytes 11548846 source-offsets 17085982 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[170460280 bytes 11548846 source-offsets 15533112 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[162664504 bytes 11548846 source-offsets 14558640 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[145148832 bytes 11548846 source-offsets 24738362 destination-indices] csrRegular32
+[290297664 bytes 11548846 source-offsets 24738362 destination-indices] csrRegular64
+[125217804 bytes 11548846 source-offsets 19755605 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[114539312 bytes 11548846 source-offsets 17085982 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[204240224 bytes 11548846 source-offsets 19755605 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[182883240 bytes 11548846 source-offsets 17085982 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[170460280 bytes 11548846 source-offsets 15533112 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[162664504 bytes 11548846 source-offsets 14558640 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+Loading graph /home/subhajit/data/asia_osm.mtx ...
+order: 11950757 size: 25423206 {}
+order: 11950757 size: 25423206 {} (transposeWithDegree)
+components: 1 min-size: 11950757 max-size: 11950757
+
+# Mode: unsorted
+[149495856 bytes 11950758 source-offsets 25423206 destination-indices] csrRegular32
+[298991712 bytes 11950758 source-offsets 25423206 destination-indices] csrRegular64
+[127524420 bytes 11950758 source-offsets 19930347 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[115989308 bytes 11950758 source-offsets 17046569 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[207245808 bytes 11950758 source-offsets 19930347 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[184175584 bytes 11950758 source-offsets 17046569 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[171331472 bytes 11950758 source-offsets 15441055 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[163653192 bytes 11950758 source-offsets 14481270 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+
+# Mode: sorted
+[149495856 bytes 11950758 source-offsets 25423206 destination-indices] csrRegular32
+[298991712 bytes 11950758 source-offsets 25423206 destination-indices] csrRegular64
+[127524420 bytes 11950758 source-offsets 19930347 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+[115989308 bytes 11950758 source-offsets 17046569 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+[4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
+[207245808 bytes 11950758 source-offsets 19930347 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+[184175584 bytes 11950758 source-offsets 17046569 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+[171331472 bytes 11950758 source-offsets 15441055 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+[163653192 bytes 11950758 source-offsets 14481270 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]

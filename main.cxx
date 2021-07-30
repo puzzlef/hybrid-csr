@@ -81,11 +81,11 @@ int main(int argc, char **argv) {
   size_t cmax = (*maxElement(cs, fl)).size();
   printf("components: %zu min-size: %zu max-size: %zu\n", cs.size(), cmin, cmax);
 
-  printf("\n# Components: unsorted\n");
+  printf("\n# Mode: unsorted\n");
   auto ks0 = join(cs);
   runCsr(x, ks0);
 
-  printf("\n# Components: sorted\n");
+  printf("\n# Mode: sorted\n");
   auto ks1 = join(sortedComponents(x, cs));
   runCsr(x, ks1);
 

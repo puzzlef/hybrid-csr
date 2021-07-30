@@ -4,7 +4,10 @@ const path = require('path');
 
 const RGRAPH = /^Loading graph .*\/(.+?)\.mtx \.\.\./m;
 const RORDER = /^order: (\d+) size: (\d+) \{\}$/m;
+const RCOMPS = /^components: (\d+) min-size: (\d+) max-size: (\d+)/m;
+const RMODES = /^# Mode: (.+)/m;
 const RRESLT = /^\[(\d+) bytes (\d+) source-offsets (\d+) destination-indices\] (\w+)(?: \[(\d+)bit block, (\d+)bit index \((\d+) eff\.\)\])?/m;
+
 
 
 
@@ -52,6 +55,16 @@ function readLogLine(ln, data, state) {
     var [, order, size] = RORDER.exec(ln);
     state.order = parseFloat(order);
     state.size  = parseFloat(size);
+  }
+  else if (RCOMPS.test(ln)) {
+    var [, components, min_size, max_size] = RCOMPS.exec(ln);
+    state.components = parseFloat(components);
+    state.min_size   = parseFloat(min_size);
+    state.max_size   = parseFloat(max_size);
+  }
+  else if (RMODES.test(ln)) {
+    var [, mode] = RMODES.exec(ln);
+    state.mode = mode;
   }
   else if (RRESLT.test(ln)) {
     var [, bytes, source_offsets, destination_indices, technique, block_bits, index_bits, effective_bits] = RRESLT.exec(ln);
