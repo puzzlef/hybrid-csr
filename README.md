@@ -2,13 +2,14 @@ Comparing space usage of regular vs hybrid CSR (various sizes).
 
 This experiment was for comparing the space usage between:
 1. **32bit Regular CSR**.
-2. **32bit Hybrid CSR** with **4bit block**, 28bit index (30 eff.).
-3. **32bit Hybrid CSR** with **8bit block**, 24bit index (27 eff.).
-4. **32bit Hybrid CSR** with **16bit block**, 16bit index (20 eff.).
-5. **64bit Hybrid CSR** with **4bit block**, 60bit index (62 eff.).
-6. **64bit Hybrid CSR** with **8bit block**, 56bit index (59 eff.).
-7. **64bit Hybrid CSR** with **16bit block**, 48bit index (52 eff.).
-8. **64bit Hybrid CSR** with **32bit block**, 32bit index (37 eff.).
+2. **64bit Regular CSR**.
+3. **32bit Hybrid CSR** with **4bit block**, 28bit index (30 eff.).
+4. **32bit Hybrid CSR** with **8bit block**, 24bit index (27 eff.).
+5. **32bit Hybrid CSR** with **16bit block**, 16bit index (20 eff.).
+6. **64bit Hybrid CSR** with **4bit block**, 60bit index (62 eff.).
+7. **64bit Hybrid CSR** with **8bit block**, 56bit index (59 eff.).
+8. **64bit Hybrid CSR** with **16bit block**, 48bit index (52 eff.).
+9. **64bit Hybrid CSR** with **32bit block**, 32bit index (37 eff.).
 
 The purpose of this experiment to assess the **size needed for graph representation**
 for various possible hybrid CSR formats, by adjusting the *size of dense bitset*
@@ -83,7 +84,8 @@ $ ...
 #
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
-# [10377604 bytes 281904 source-offsets 2312497 destination-indices] csrRegular
+# [10377604 bytes 281904 source-offsets 2312497 destination-indices] csrRegular32
+# [20755208 bytes 281904 source-offsets 2312497 destination-indices] csrRegular64
 # [10377080 bytes 281904 source-offsets 2312366 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
 # [10376488 bytes 281904 source-offsets 2312218 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
 # [10374184 bytes 281904 source-offsets 2311642 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
@@ -94,26 +96,27 @@ $ ...
 #
 # ...
 #
-# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
-# order: 4847571 size: 68993773 {}
-# [295365380 bytes 4847572 source-offsets 68993773 destination-indices] csrRegular
-# [259873684 bytes 4847572 source-offsets 60120849 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
-# [246424504 bytes 4847572 source-offsets 56758554 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
+# Loading graph /home/subhajit/data/indochina-2004.mtx ...
+# order: 7414866 size: 194109311 {}
+# [806096712 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular32
+# [1612193424 bytes 7414867 source-offsets 194109311 destination-indices] csrRegular64
+# [308575068 bytes 7414867 source-offsets 69728900 destination-indices] csrHybrid32 [4bit block, 28bit index (30 eff.)]
+# [215743112 bytes 7414867 source-offsets 46520911 destination-indices] csrHybrid32 [8bit block, 24bit index (27 eff.)]
 # [4 bytes 1 source-offsets 0 destination-indices] csrHybrid32 [16bit block, 16bit index (20 eff.)]
-# [500357080 bytes 4847572 source-offsets 60120849 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
-# [473458720 bytes 4847572 source-offsets 56758554 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
-# [450554736 bytes 4847572 source-offsets 53895556 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
-# [431781256 bytes 4847572 source-offsets 51548871 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
+# [587490668 bytes 7414867 source-offsets 69728900 destination-indices] csrHybrid64 [4bit block, 60bit index (62 eff.)]
+# [401826756 bytes 7414867 source-offsets 46520911 destination-indices] csrHybrid64 [8bit block, 56bit index (59 eff.)]
+# [301548740 bytes 7414867 source-offsets 33986159 destination-indices] csrHybrid64 [16bit block, 48bit index (52 eff.)]
+# [245751420 bytes 7414867 source-offsets 27011494 destination-indices] csrHybrid64 [32bit block, 32bit index (37 eff.)]
 #
 # ...
 ```
 
-[![](https://i.imgur.com/xg39RO0.png)][sheets]
-[![](https://i.imgur.com/NkfDg7g.png)][sheets]
-[![](https://i.imgur.com/wCQkoh0.png)][sheets]
-[![](https://i.imgur.com/UGRum3D.png)][sheets]
-[![](https://i.imgur.com/HDdZ1Fv.png)][sheets]
-[![](https://i.imgur.com/xnd2Sgj.png)][sheets]
+[![](https://i.imgur.com/p2erE5U.png)][sheetp]
+[![](https://i.imgur.com/WqHFTnd.png)][sheetp]
+[![](https://i.imgur.com/1LUS4vy.png)][sheetp]
+[![](https://i.imgur.com/5D55sPo.png)][sheetp]
+[![](https://i.imgur.com/ok5gWz9.png)][sheetp]
+[![](https://i.imgur.com/LiA5w8S.png)][sheetp]
 
 <br>
 <br>
@@ -137,4 +140,5 @@ $ ...
 [*block-bits*]: https://github.com/puzzlef/csr-regular-vs-hybrid/blob/main/src/csr.hxx#L166
 [*hybrid CSR entry*]: https://github.com/puzzlef/csr-regular-vs-hybrid/blob/main/src/csr.hxx#L171
 [charts]: https://photos.app.goo.gl/AXEesDgbxegtmus16
-[sheets]: https://docs.google.com/spreadsheets/d/1MImPpZw*Hgrq0*BNvmcIZ3aj-cWHNcM0zBqsNvuyFXI/edit?usp=sharing
+[sheets]: https://docs.google.com/spreadsheets/d/1MImPpZw_Hgrq0_BNvmcIZ3aj-cWHNcM0zBqsNvuyFXI/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vR-OZsV2Psj_qPWOeHxzemgRo2MmqovHStJK5tbHFAGzBqPBa92zz4SQW5kuztM5zcr0r0NM7xZIFCy/pubhtml
