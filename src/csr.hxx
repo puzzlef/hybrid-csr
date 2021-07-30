@@ -102,8 +102,8 @@ void println(const Csr<T, U>& x, bool all=false) { print(x, all); cout << "\n"; 
 // CSR (FROM GRAPH)
 // ----------------
 
-template <class G, class J, class K=int>
-auto csr(const G& x, J&& ks, K typ=K()) {
+template <class G, class J, class K>
+auto csr(const G& x, J&& ks, K typ) {
   Csr<K> a;
   auto& vto = a.sourceOffsets;
   auto& eto = a.destinationIndices;
@@ -118,8 +118,8 @@ auto csr(const G& x, J&& ks, K typ=K()) {
   return a;
 }
 
-template <class G, class K=int>
-auto csr(const G& x, K typ=K()) {
+template <class G, class K>
+auto csr(const G& x, K typ) {
   return csr(x, x.vertices(), typ);
 }
 
