@@ -5,3 +5,5 @@
 #include "edges.hxx"
 #include "csr.hxx"
 #include "mtx.hxx"
+#include "copy.hxx"
+#include "transpose.hxx"

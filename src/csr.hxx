@@ -102,9 +102,9 @@ void println(const Csr<T, U>& x, bool all=false) { print(x, all); cout << "\n"; 
 // CSR (FROM GRAPH)
 // ----------------
 
-template <class G, class J>
-auto csr(const G& x, J&& ks) {
-  Csr<int, int> a;
+template <class G, class J, class K=int>
+auto csr(const G& x, J&& ks, K typ=K()) {
+  Csr<K> a;
   auto& vto = a.sourceOffsets;
   auto& eto = a.destinationIndices;
   auto ids  = indices(ks);
@@ -118,9 +118,9 @@ auto csr(const G& x, J&& ks) {
   return a;
 }
 
-template <class G>
-auto csr(const G& x) {
-  return csr(x, x.vertices());
+template <class G, class K=int>
+auto csr(const G& x, K typ=K()) {
+  return csr(x, x.vertices(), typ);
 }
 
 
@@ -287,7 +287,7 @@ auto hybridCsr(const G& x, J&& ks, K blk) {
     auto vs = edges(x, u, [&](int v) { return ids[v]; });
     sort(vs.begin(), vs.end());
     if (!vs.empty()) hybridCsrPush(eto, K(vs[0]), blk);
-    for (int v : slice(vs, 1))
+    for (int v : sliceIter(vs, 1))
       hybridCsrSortedAdd(eto, K(v), blk);
   }
   vto.push_back(eto.size());
