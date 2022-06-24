@@ -130,7 +130,9 @@ $ ...
 <br>
 <br>
 
-[![](https://i.imgur.com/eR6BeVh.jpg)](https://www.youtube.com/watch?v=1yoDFJ-JSag)
+[![](https://i.imgur.com/eR6BeVh.jpg)](https://www.youtube.com/watch?v=1yoDFJ-JSag)<br>
+[![DOI](https://zenodo.org/badge/368085146.svg)](https://zenodo.org/badge/latestdoi/368085146)
+
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
 [Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
